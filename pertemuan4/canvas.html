@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial HTML 5 Canvas</title>
+</head>
+<body>
+
+    <p>Pilih gambar yang akan di-render:</p>
+    <!-- Image 1 -->
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/sv9Gwdn/0d9d16e5fd30677b6f882ef38c6d714a.jpg" alt="0d9d16e5fd30677b6f882ef38c6d714a" border="0"></a>
+    <button onclick="renderImage('https://i.ibb.co/sv9Gwdn/0d9d16e5fd30677b6f882ef38c6d714a.jpg', 'myCanvas')">Render Image 1</button>
+    
+    <!-- Image 2 -->
+    <a href="https://ibb.co/jgyzpkj"><img src="https://i.ibb.co/dGPth4H/Whats-App-Image-2023-12-21-at-12-44-36-48338ef2.jpg" alt=" alt="Image 1" width="220" height="277">
+    <button onclick="renderImage('https://i.ibb.co/dGPth4H/Whats-App-Image-2023-12-21-at-12-44-36-48338ef2.jpg', 'myCanvas2')">Render Image 2</button>
+
+    <canvas id="myCanvas" width="640" height="480" style="border:1px solid #000000;"></canvas>
+    <canvas id="myCanvas2" width="640" height="480" style="border:1px solid #000000;"></canvas>
+   
+
+    <script type="text/javascript">
+        function renderImage(imageUrl, canvasId) {
+            var canvas = document.getElementById(canvasId);
+            var ctx = canvas.getContext("2d");
+
+            // Buat objek gambar baru
+            var img = new Image();
+            
+            // Tentukan URL gambar
+            img.src = imageUrl;
+
+            // Saat gambar selesai dimuat, render ke Canvas
+            img.onload = function() {
+                // Ambil ukuran gambar
+                var width = img.width;
+                var height = img.height;
+
+                // Ambil ukuran canvas
+                var canvasWidth = canvas.width;
+                var canvasHeight = canvas.height;
+
+                // Hitung skala untuk meresize gambar
+                var scale = Math.min(canvasWidth / width, canvasHeight / height);
+
+                // Ukuran baru untuk gambar
+                var newWidth = width * scale;
+                var newHeight = height * scale;
+
+                // Posisi agar gambar berada di tengah canvas
+                var x = (canvasWidth - newWidth) / 2;
+                var y = (canvasHeight - newHeight) / 2;
+
+                // Gambar gambar ke canvas dengan ukuran baru dan posisi di tengah
+                ctx.drawImage(img, x, y, newWidth, newHeight);
+            };
+        }
+    </script>
+
+</body>
+</html>
