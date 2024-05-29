@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(6, 133, 244);
+}
+
+p {
+    color: aqua;
+    text-align: left;
+}
+
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+#p_a {
+    color: darkslategrey;
+    text-align: center;
+}
+
+h2{
+    color: springgreen;
+    text-decoration: solid;
+}
